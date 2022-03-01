@@ -40,7 +40,7 @@ export class CartdetailsService {
     {
       name: 'Jumanji',
       language: 'English',
-      stocks: 0,
+      stocks: 1,
       rating: '3/5',
       mode: 'dvd',
       img: 'https://www.pinkvilla.com/files/styles/large/public/Jumanji.jpg',

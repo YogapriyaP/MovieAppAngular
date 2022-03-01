@@ -6,11 +6,19 @@
     <button mat-menu-item [matMenuTriggerFor]="ratings">Ratings</button>
 
     <mat-menu #languages="matMenu">
-      <button class="mat-menu-item" (click)="filterData('English')">English</button>
+      <button class="mat-menu-item" (click)="filterData('English')">
+        English
+      </button>
       <button class="mat-menu-item" (click)="filterData('Tamil')">Tamil</button>
-      <button class="mat-menu-item" (click)="filterData('Telugu')">Telugu</button>
-      <button class="mat-menu-item" (click)="filterData('Malayalam')">Malayalam</button>
-      <button class="mat-menu-item" (click)="filterData('Kannada')">Kannada</button>
+      <button class="mat-menu-item" (click)="filterData('Telugu')">
+        Telugu
+      </button>
+      <button class="mat-menu-item" (click)="filterData('Malayalam')">
+        Malayalam
+      </button>
+      <button class="mat-menu-item" (click)="filterData('Kannada')">
+        Kannada
+      </button>
       <button class="mat-menu-item" (click)="filterData('Hindi')">Hindi</button>
     </mat-menu>
     <mat-menu #ratings="matMenu">
@@ -19,7 +27,6 @@
       <button class="mat-menu-item" (click)="filterData('4/5')">4</button>
       <button class="mat-menu-item" (click)="filterData('3.5/5')">3.5</button>
       <button class="mat-menu-item" (click)="filterData('3/5')">3</button>
-      
     </mat-menu>
   </mat-menu>
 </button>
@@ -36,10 +43,11 @@
         <span>
           {{ movie.rating }}
         </span>
-        <br>
-        <span>Stocks:{{movie.stocks}}</span>
         <br />
-        <span style="color: green" *ngIf="movie.stocks">In Stock</span>
+        <span style="color: green" *ngIf="movie.stocks>1"
+          >{{ movie.stocks }} stocks left</span>
+            <span style="color: green" *ngIf="movie.stocks==1"
+          >{{ movie.stocks }} stock left</span>
         <span style="color: red" *ngIf="!movie.stocks">Out of Stock</span>
         <mat-card-actions>
           <button
@@ -49,8 +57,7 @@
             matBadgeColor="warn"
             mat-flat-button
             disabled="false"
-            (click)="addtoCart(movie)"
-          >
+            (click)="addtoCart(movie)">
             Add to cart
           </button>
           <button

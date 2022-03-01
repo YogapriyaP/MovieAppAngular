@@ -15,34 +15,31 @@ export class CartComponent implements OnInit {
     this.cartItems = this.service.addedItems;
   }
 
-  removeCartItem(item: any,mode: string) {
-    if(mode=='dvd')
-    {
-       this.service.updateStocks(item,'remove')
-    this.cartItems.forEach((value, index) => {
-      if (value == item) {
-        this.cartItems.splice(index, 1);
-        item = undefined;
-      }
-    });
+  removeCartItem(item: any, mode: string) {
+    if (mode == 'dvd') {
+      this.service.updateStocks(item, 'remove');
+      this.cartItems.forEach((value, index) => {
+        if (value == item) {
+          this.cartItems.splice(index, 1);
+          item = undefined;
+        }
+      });
+    } else {
+      this.cartItems.forEach((value, index) => {
+        if (value == item) {
+          this.cartItems.splice(index, 1);
+          item = undefined;
+        }
+      });
     }
-    else{
-       this.cartItems.forEach((value, index) => {
-      if (value == item) {
-        this.cartItems.splice(index, 1);
-        item = undefined;
-      }
-    });
-
-    }
-    
-    
   }
   proceedToBuy() {
-    alert(`${this.cartItems.length} movies Purchased`);
-    this.cartItems=this.service.clearCart();
-    
-  }
+    if (this.cartItems.length == 1) {
+      alert(`${this.cartItems.length} movie Purchased`);
+    } else {
+      alert(`${this.cartItems.length} movies Purchased`);
+    }
 
- 
+    this.cartItems = this.service.clearCart();
+  }
 }
