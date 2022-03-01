@@ -1,0 +1,24 @@
+$default-color:rgb(180, 179, 179);
+
+.app-toolbar{
+  background-color:$default-color;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight:900;
+  height:10%;
+  justify-content: space-around;
+}
+
+.title{
+  font-size: larger;
+
+}
+
+.icon{
+ 
+  background-color:$default-color;
+  column-width: 30%;
+}
+
+
+

@@ -1,0 +1,48 @@
+
+
+.app-toolbar{
+  background-color: rgb(180, 179, 179);
+  display: flex;
+  flex-wrap: nowrap;
+  font-weight:900;
+  height:70px;
+  justify-content: space-between;
+  padding:3%;
+ 
+}
+
+.icon{
+  margin-right: 5%;
+  background-color: rgb(180, 179, 179);
+  column-width: 20%;
+}
+
+.search-movies{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 10%;
+}
+
+.movie-cards{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 10%;
+  justify-content: center;
+  
+}
+.movie-card{
+ margin:7%;
+  width:230px;
+  height: 90%;
+  background-color: rgb(180, 179, 179);  
+}
+
+.movie-card :hover{
+  transform: scale(1.01);
+}
+
+.filter{
+  margin-left: 1%;
+}
