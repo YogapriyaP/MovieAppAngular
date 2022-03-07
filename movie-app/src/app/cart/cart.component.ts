@@ -25,6 +25,7 @@ export class CartComponent implements OnInit {
         }
       });
     } else {
+      item.available=1;
       this.cartItems.forEach((value, index) => {
         if (value == item) {
           this.cartItems.splice(index, 1);

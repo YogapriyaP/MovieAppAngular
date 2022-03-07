@@ -11,6 +11,7 @@ export class CartdetailsService {
   stocks: number = 10;
   noOfCartEntries: number = 0;
   filteredData: any[] = [];
+  productList:any[]=[];
 
   moviesList = [
     {
@@ -99,15 +100,15 @@ export class CartdetailsService {
     {
       name: 'Baahubali 2',
       language: 'Telugu',
-      stocks: 9,
+      available:1,
       rating: '4/5',
-      mode: 'dvd',
+      
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0HdmiTBkBlIDoHBeXjpN_nwYvX-GE3vP09r4eiVPdQqMu61M-QZBjXoHyNAp42h-fvIE&usqp=CAU',
     },
     {
       name: 'Hridayam',
       language: 'Malayalam',
-
+      available:1,
       rating: '4.5/5',
 
       img: 'https://m.media-amazon.com/images/M/MV5BNTI1NjNkNmItM2FlZi00MWU1LWJkMmMtMzBjMDI4YmU5YjIyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg',
@@ -115,7 +116,7 @@ export class CartdetailsService {
     {
       name: 'RRR',
       language: 'Tamil',
-
+      available:1,
       rating: '4/5',
 
       img: 'https://www.pinkvilla.com/imageresize/rrr-bacchan-runway-clash.jpg?width=752&format=webp&t=pvorg',
@@ -123,7 +124,7 @@ export class CartdetailsService {
     {
       name: 'Doctor',
       language: 'Tamil',
-
+      available:1,
       rating: '4/5',
 
       img: 'https://moviegalleri.net/wp-content/uploads/2020/02/Sivakarthikeyan-Doctor-Movie-First-Look-Poster-HD.jpg',
@@ -131,7 +132,7 @@ export class CartdetailsService {
     {
       name: 'Rab Ne Bana Di Jodi',
       language: 'Hindi',
-
+      available:1,
       rating: '3.5/5',
 
       img: 'https://www.makemykaraoke.com/images/detailed/21/Rab_Ne_Dance_pe_chance.jpg',
@@ -139,7 +140,7 @@ export class CartdetailsService {
     {
       name: 'Valimai',
       language: 'Tamil',
-
+      available:1,
       rating: '3.5/5',
 
       img: 'https://w0.peakpx.com/wallpaper/449/487/HD-wallpaper-valimai-thala-valimaithala-valimaiupdate-ajithkumar-valimai-ajith-valimaiajith-valimaiposter-thumbnail.jpg',
@@ -147,7 +148,7 @@ export class CartdetailsService {
     {
       name: 'Beast',
       language: 'Tamil',
-
+      available:1,
       rating: '4/5',
 
       img: 'https://moviegalleri.net/wp-content/uploads/2021/06/Thalapathy-65-Vijay-Birthday-Wishes-BEAST-Movie-Second-Look-Poster-HD.jpg',
@@ -155,7 +156,7 @@ export class CartdetailsService {
     {
       name: 'Shyam Singha Roy',
       language: 'Telugu',
-
+      available:1,
       rating: '4/5',
 
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZjlerGxMKthLP9bW8PZQSobbJUYirZAm9tCrE_6lmfY_XhmTnh0I4UqIlaJglg6DSBQg&usqp=CAU',
@@ -163,7 +164,7 @@ export class CartdetailsService {
     {
       name: 'Dia',
       language: 'Kannada',
-
+      available:1,
       rating: '4/5',
 
       img: 'https://m.media-amazon.com/images/M/MV5BNDQxYjRmNWYtNjgyMC00MDg2LTg2OTEtZmIzNWNkMDhkOTk1XkEyXkFqcGdeQXVyMzU0ODc1MTQ@._V1_.jpg',
@@ -171,7 +172,7 @@ export class CartdetailsService {
     {
       name: 'Mudhal Nee Mudivum Nee',
       language: 'Tamil',
-
+      available:1,
       rating: '4.5/5',
 
       img: 'https://akamaividz2.zee5.com/image/upload/w_630,h_945,c_scale,f_auto,q_auto/resources/0-0-1z575093/portrait/1920x770bc6b8a5d259d44b7b5e8200ffefef2ac.jpg',
@@ -203,6 +204,8 @@ export class CartdetailsService {
 
   addToCart(movie: any) {
     this.addedItems.push(movie);
+     movie.available=0;
+     return movie.available;
   }
 
   clearCart() {
@@ -210,34 +213,7 @@ export class CartdetailsService {
     return this.addedItems;
   }
 
-  restoreStock(item: any) {
-    console.log(item);
-    this.moviesList[
-      this.moviesList.indexOf(
-        this.moviesList.filter((a) => {
-          return (a.name = item.name);
-        })[0]
-      )
-    ].stocks =
-      this.moviesList[
-        this.moviesList.indexOf(
-          this.moviesList.filter((a) => {
-            return (a.name = item.name);
-          })[0]
-        )
-      ].stocks + 1;
-    console.log(
-      this.moviesList[
-        this.moviesList.indexOf(
-          this.moviesList.filter((a) => {
-            return (a.name = item.name);
-          })[0]
-        )
-      ].stocks
-    );
-  }
-
-  updateStocks(movie: any, func: string) {
+ updateStocks(movie: any, func: string) {
     let index = this.moviesList.indexOf(
       this.moviesList.filter((a) => {
         return (a.name == movie.name);

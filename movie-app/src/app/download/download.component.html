@@ -4,6 +4,7 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item [matMenuTriggerFor]="languages">Languages</button>
     <button mat-menu-item [matMenuTriggerFor]="ratings">Ratings</button>
+    <button mat-menu-item (click)="clearFilter()">Show all</button>
 
     <mat-menu #languages="matMenu">
       <button class="mat-menu-item" (click)="filterData('English')">English</button>
@@ -38,8 +39,19 @@
           {{ movie.rating }}
         </span>
         <mat-card-actions>
+        <span *ngIf="!movie.available" style="color: red;">Added to the cart</span>
+        <br>
           <button
-           
+           *ngIf="movie.available"
+            mat-flat-button
+            disabled="false"
+            (click)="addToCart(movie)"
+          >
+            Add to cart
+          </button>
+          <button
+           *ngIf="!movie.available"
+           disabled="true"
             matBadgeColor="warn"
             mat-flat-button
             (click)="addToCart(movie)"

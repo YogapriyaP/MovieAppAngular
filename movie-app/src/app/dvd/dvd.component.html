@@ -1,9 +1,10 @@
-<button class="filter" mat-flat-button [matMenuTriggerFor]="menu">
+<button class="filter" mat-flat-button color="transparent" [matMenuTriggerFor]="menu">
   <mat-icon>filter_list</mat-icon><label>Filter</label>
 
   <mat-menu #menu="matMenu">
     <button mat-menu-item [matMenuTriggerFor]="languages">Languages</button>
     <button mat-menu-item [matMenuTriggerFor]="ratings">Ratings</button>
+    <button mat-menu-item (click)="clearFilter()">Show all</button>
 
     <mat-menu #languages="matMenu">
       <button class="mat-menu-item" (click)="filterData('English')">
@@ -46,8 +47,8 @@
         <br />
         <span style="color: green" *ngIf="movie.stocks>1"
           >{{ movie.stocks }} stocks left</span>
-            <span style="color: green" *ngIf="movie.stocks==1"
-          >{{ movie.stocks }} stock left</span>
+            <span class="stock" *ngIf="movie.stocks==1"
+          >Only {{ movie.stocks }} stock left</span>
         <span style="color: red" *ngIf="!movie.stocks">Out of Stock</span>
         <mat-card-actions>
           <button

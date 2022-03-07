@@ -1,7 +1,7 @@
-
+$default-color:rgb(180, 179, 179);
 
 .app-toolbar{
-  background-color: rgb(180, 179, 179);
+  background-color: $default_color;
   display: flex;
   flex-wrap: nowrap;
   font-weight:900;
@@ -13,7 +13,7 @@
 
 .icon{
   margin-right: 5%;
-  background-color: rgb(180, 179, 179);
+  background-color: $default_color;
   column-width: 20%;
 }
 
@@ -36,7 +36,7 @@
  margin:7%;
   width:230px;
   height: 90%;
-  background-color: rgb(180, 179, 179);  
+  background-color:rgb(180, 179, 179);  
 }
 
 .movie-card :hover{
@@ -45,4 +45,40 @@
 
 .filter{
   margin-left: 1%;
+  margin-top: 1%;
+  background-color: transparent;
+  color: $default-color;
+}
+
+
+
+@mixin blinking($property){
+
+  @keyframes blinking {
+	0% {
+		color: red;
+	}
+	20% {
+		color: transparent;
+	}
+	40% {
+		color: red;
+	}
+	60% {
+		color: transparent;
+	}
+	100% {
+		color: red;
+	}
+}
+
+animation:$property;
+}
+  
+
+
+.stock{
+ 
+@include blinking (blinking 1.5s infinite) ;
+ 
 }

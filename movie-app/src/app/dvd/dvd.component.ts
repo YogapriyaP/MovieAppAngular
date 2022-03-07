@@ -30,11 +30,13 @@ export class DvdComponent implements OnInit {
       movie.stocks = 0;
       movie.stocks = this.service.updateStocks(movie, 'add');
     }
-    console.log(movie.stocks);
   }
 
   filterData(value: any) {
     this.moviesList = [];
     this.moviesList = this.service.filterData(value, 'dvd');
+  }
+  clearFilter() {
+    this.moviesList = this.service.moviesList;
   }
 }
