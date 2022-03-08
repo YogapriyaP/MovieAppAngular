@@ -1,15 +1,5 @@
 $default-color:rgb(180, 179, 179);
 
-.app-toolbar{
-  background-color: $default_color;
-  display: flex;
-  flex-wrap: nowrap;
-  font-weight:900;
-  height:70px;
-  justify-content: space-between;
-  padding:3%;
- 
-}
 
 .icon{
   margin-right: 5%;
@@ -45,9 +35,10 @@ $default-color:rgb(180, 179, 179);
 
 .filter{
   margin-left: 1%;
-  margin-top: 1%;
+  margin-top: 5%;
   background-color: transparent;
   color: $default-color;
+  position: sticky;
 }
 
 

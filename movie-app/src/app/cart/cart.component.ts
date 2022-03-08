@@ -40,7 +40,7 @@ export class CartComponent implements OnInit {
     } else {
       alert(`${this.cartItems.length} movies Purchased`);
     }
-
+    
     this.cartItems = this.service.clearCart();
   }
 }
